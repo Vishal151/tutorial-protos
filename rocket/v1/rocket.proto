@@ -4,44 +4,40 @@ option go_package = "rocket/v1";
 
 // Rocket represents the model of our rocket
 message Rocket {
-    string type = 1;
+  string id = 1;
+  string name = 2;
+  string type = 3;
 }
 
-// RocketService - defines what endpoints we'll be exposing
-// from our gRPC rocket service
 service RocketService {
-    rpc GetRocket (GetRocketRequest) returns (GetRocketResponse);
-    rpc AddRocket (AddRocketRequest) returns (AddRocketResponse);
-    rpc DeleteRocket (DeleteRocketRequest) returns (DeleteRocketResponse);
+  rpc GetRocket (GetRocketRequest) returns (GetRocketResponse);
+  rpc AddRocket (AddRocketRequest) returns (AddRocketResponse);
+  rpc DeleteRocket (DeleteRocketRequest) returns (DeleteRocketResponse);
 }
 
-// -- Get Rocket Handler -- 
+// -- Get Rocket Message Types --
 message GetRocketRequest {
-    int64 id = 1;
+  string id = 1;
 }
 
 message GetRocketResponse {
-    Rocket rocket = 1;
+  Rocket rocket = 1;
 }
-// -- -- 
 
-// -- Add Rocket Handler -- 
+// -- Add Rocket Message Types --
 message AddRocketRequest {
-    Rocket rocket = 1;
+  Rocket rocket = 1;
 }
 
 message AddRocketResponse {
-    Rocket rocket = 1;
+  Rocket rocket = 1;
 }
-// -- -- 
 
-
-// -- Add Rocket Handler -- 
+// -- Delete Rocket Message Types --
 message DeleteRocketRequest {
-    int64 id = 1;
+  Rocket rocket = 1;
 }
 
 message DeleteRocketResponse {
-    string status = 1;
+  string status = 1;
 }
-// -- -- 
